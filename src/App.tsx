@@ -22,21 +22,21 @@ const arr = [
 ];
 
 const App = () => {
-  const [Type1, onType1] = useState(0);
-  const [Type2, onType2] = useState(0);
+  //const [Type1, onType1] = useState(0);
+  //const [Type2, onType2] = useState(0);
   const [Fur, onFur] = useState("");
-  const [Opt, onOpt] = useState("");
+  //const [Opt, onOpt] = useState("");
 
   const magic = (input: string) => {
     if (input == "AC") {
       onFur("");
-      onType1(0);
-      onType2(0);
-      onOpt("");
+      //onType1(0);
+      //onType2(0);
+      //onOpt("");
     } else {
       onFur(Fur + input);
       if (input == "+" || "-" || "X" || "/") {
-        onOpt(input);
+        //onOpt(input);
       }
     }
   };
