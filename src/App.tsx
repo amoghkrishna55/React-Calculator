@@ -20,7 +20,7 @@ const arr = [
   "0",
   ".",
 ];
-
+let end = false;
 const App = () => {
   const [Type1, onType1] = useState("");
   const [Type2, onType2] = useState("");
@@ -29,19 +29,13 @@ const App = () => {
   const [Res, onRes] = useState("");
 
   const magic = (input: string) => {
-    if (Res != "") {
-      onFur(`${Res}`);
-      onType1(`${Res}`);
-      onType2("");
-      onOpt("");
-      onRes("");
-    }
     if (input == "AC") {
       onFur("");
       onType1("");
       onType2("");
       onOpt("");
       onRes("");
+      end = false;
     } else if (input == "=") {
       if (Type1 == "") {
         onType1("0");
@@ -52,25 +46,53 @@ const App = () => {
       if (Opt == "") {
         onOpt("+");
       }
+      end = true;
       const a = parseInt(Type1);
       const b = parseInt(Type2);
+      let result;
       if (Opt == "+") {
-        onRes(`${a + b}`);
+        result = a + b;
       } else if (Opt == "-") {
-        onRes(`${a - b}`);
+        result = a - b;
       } else if (Opt == "x") {
-        onRes(`${a * b}`);
+        result = a * b;
       } else if (Opt == "/") {
-        onRes(`${a / b}`);
+        result = a / b;
       }
+      onRes(`${result}`);
+      onFur(Type1 + Opt + Type2 + input + result);
     } else {
       if (input === "+" || input === "-" || input === "x" || input === "/") {
-        onOpt(input);
-      } else {
-        if (Opt != "") {
-          onType2(Type2 + input);
+        if (end === true) {
+          onType1(Res);
+          onType2("");
+          onOpt(input);
+          onRes(input);
+          onFur(Res + input);
+          end = false;
         } else {
-          onType1(Type1 + input);
+          onOpt(input);
+          onRes(input);
+          onFur(Fur + input);
+        }
+      } else {
+        if (end === true) {
+          onType1(input);
+          onType2("");
+          onOpt("");
+          onRes(input);
+          onFur(input);
+          end = false;
+        } else {
+          if (Opt != "") {
+            onType2(Type2 + input);
+            onRes(Type2 + input);
+            onFur(Fur + input);
+          } else {
+            onType1(Type1 + input);
+            onRes(Type1 + input);
+            onFur(Fur + input);
+          }
         }
       }
     }
@@ -83,7 +105,9 @@ const App = () => {
           <div className="formula">
             <h1> {Fur} </h1>
           </div>
-          <div className="typed">{Res}</div>
+          <div className="typed">
+            <h1>{Res}</h1>
+          </div>
         </div>
         <div className="keypad">
           {arr.map((id) => (
