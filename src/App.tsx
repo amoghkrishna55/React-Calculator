@@ -4,7 +4,7 @@ import "./App.css";
 const arr = [
   "AC",
   "/",
-  "X",
+  "x",
   "9",
   "8",
   "7",
@@ -22,21 +22,56 @@ const arr = [
 ];
 
 const App = () => {
-  //const [Type1, onType1] = useState(0);
-  //const [Type2, onType2] = useState(0);
+  const [Type1, onType1] = useState("");
+  const [Type2, onType2] = useState("");
   const [Fur, onFur] = useState("");
-  //const [Opt, onOpt] = useState("");
+  const [Opt, onOpt] = useState("");
+  const [Res, onRes] = useState("");
 
   const magic = (input: string) => {
+    if (Res != "") {
+      onFur(`${Res}`);
+      onType1(`${Res}`);
+      onType2("");
+      onOpt("");
+      onRes("");
+    }
     if (input == "AC") {
       onFur("");
-      //onType1(0);
-      //onType2(0);
-      //onOpt("");
+      onType1("");
+      onType2("");
+      onOpt("");
+      onRes("");
+    } else if (input == "=") {
+      if (Type1 == "") {
+        onType1("0");
+      }
+      if (Type2 == "") {
+        onType2("0");
+      }
+      if (Opt == "") {
+        onOpt("+");
+      }
+      const a = parseInt(Type1);
+      const b = parseInt(Type2);
+      if (Opt == "+") {
+        onRes(`${a + b}`);
+      } else if (Opt == "-") {
+        onRes(`${a - b}`);
+      } else if (Opt == "x") {
+        onRes(`${a * b}`);
+      } else if (Opt == "/") {
+        onRes(`${a / b}`);
+      }
     } else {
-      onFur(Fur + input);
-      if (input == "+" || "-" || "X" || "/") {
-        //onOpt(input);
+      if (input === "+" || input === "-" || input === "x" || input === "/") {
+        onOpt(input);
+      } else {
+        if (Opt != "") {
+          onType2(Type2 + input);
+        } else {
+          onType1(Type1 + input);
+        }
       }
     }
   };
@@ -48,7 +83,7 @@ const App = () => {
           <div className="formula">
             <h1> {Fur} </h1>
           </div>
-          <div className="typed"></div>
+          <div className="typed">{Res}</div>
         </div>
         <div className="keypad">
           {arr.map((id) => (
