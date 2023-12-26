@@ -71,9 +71,12 @@ const App = () => {
           onFur(Res + input);
           end = false;
         } else {
+          if (Type1 == "") {
+            onType1("0");
+          }
           onOpt(input);
           onRes(input);
-          onFur(Fur + input);
+          onFur(Type1 + input);
         }
       } else {
         if (end === true) {
