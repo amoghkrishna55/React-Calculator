@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Developed from "./Developed";
 
 const arr = [
   "AC",
@@ -137,6 +138,7 @@ const App = () => {
           ))}
         </div>
       </div>
+      <Developed />
     </>
   );
 };

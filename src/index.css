@@ -15,3 +15,27 @@ html,
 body {
   height: 100%;
 }
+
+.developed {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 15px;
+  color: black;
+  text-decoration: none;
+  padding: 20px;
+  font-family: Share Tech Mono, sans;
+}
+
+.developed a {
+  color: black;
+  text-decoration: none;
+}
+
+.developed a::after {
+  content: "";
+}
+
+.developed a:hover::after {
+  content: " (Go to github)";
+}
