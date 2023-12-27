@@ -2,13 +2,13 @@
 
 React - Calculator is a web application built with React and Vite that allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, and division. It features a user-friendly interface with a digital-style display.
 
-# Features
+## Features
 
 Perform basic arithmetic operations: addition, subtraction, multiplication, and division
 Clear the display with a single click
 View the result of the operation on a digital-style display
 
-# Live Preview
+## Live Preview
 
 You can preview the website by clicking [here](https://amoghkrishna55.github.io/React-Calculator/).
 
@@ -49,7 +49,7 @@ The calculator UI uses the following fonts:
 - Digital: [Link to font](https://fonts.google.com/specimen/Digital)
 - Share Tech Mono: [Link to font](https://fonts.google.com/specimen/Share+Tech+Mono)
 
-# Contributing
+## Contributing
 
 Contributions are welcome! If you have any suggestions or improvements, please open an issue or submit a pull request.
 
