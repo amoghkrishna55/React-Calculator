@@ -26,7 +26,7 @@ const App = () => {
   const [Type2, onType2] = useState("");
   const [Fur, onFur] = useState("");
   const [Opt, onOpt] = useState("");
-  const [Res, onRes] = useState("");
+  const [Res, onRes] = useState("0");
 
   const magic = (input: string) => {
     if (input == "AC") {
@@ -34,7 +34,7 @@ const App = () => {
       onType1("");
       onType2("");
       onOpt("");
-      onRes("");
+      onRes("0");
       end = false;
     } else if (input == "=") {
       if (Type1 == "") {
@@ -118,7 +118,19 @@ const App = () => {
               onClick={() => magic(id)}
               key={id}
               id={id}
-              className={`item-${id != "=" ? id : "equal"}`}
+              className={`item-${
+                id !== "+"
+                  ? id !== "-"
+                    ? id !== "/"
+                      ? id !== "x"
+                        ? id !== "="
+                          ? id
+                          : "equal"
+                        : "multiply"
+                      : "divide"
+                    : "subtract"
+                  : "add"
+              }`}
             >
               {id}
             </button>
